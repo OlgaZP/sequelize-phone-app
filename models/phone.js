@@ -1,6 +1,7 @@
 'use strict';
 const { Model } = require('sequelize');
 const { date } = require('yup');
+const { Sequelize } = require('.');
 module.exports = (sequelize, DataTypes) => {
   class Phone extends Model {
     static associate (models) {
@@ -23,9 +24,9 @@ module.exports = (sequelize, DataTypes) => {
       },
       manufacturedDate: {
         type: DataTypes.DATEONLY,
-        defaultValue: new Date('01-01-2021'),
+        defaultValue: new Date('2021-01-01'),
         validate: {
-          isBefore: new Date(),
+          isBefore: new Date().toISOString(),
           isDate: true,
         },
       },

@@ -12,13 +12,14 @@ module.exports.getPhoneById = async (req, res) => {
 module.exports.createPhone = async (req, res, next) => {
   console.log(`run createPhones method`);
   const { body } = req;
-
+  console.log(`body`, body);
   try {
     const newPhone = await Phone.create(body);
     console.log(`newPhone.get()`, newPhone.get());
 
     res.status(200).send();
   } catch (err) {
+    console.log(`err`, err);
     next(err);
   }
 };
